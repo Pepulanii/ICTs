@@ -25,7 +25,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <i className="fa fa-home"></i>
                     <Link to="/">HOME</Link>
                 </div>
-                <h2>SMART ZAMBIA SERVICES</h2>
+                <h2>SMART ZAMBIA TECHNOLOGY</h2>
                 <div className="sidebar__link">
                     <i className="fa fa-user-secret"></i>
                     <a href="#">Admin Management</a>
@@ -37,6 +37,10 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                 <div className="sidebar__link">
                     <i className="fa fa-archive"></i>
                     <a href="/eservices">E-Services</a>
+                </div>
+                <div className="sidebar__link">
+                    <i className="fa fa-plus"></i>
+                    <Link>Add A Technology</Link>
                 </div>
                 <h2>TAXABLE SERVICES</h2>
                 <div className="sidebar__link">
