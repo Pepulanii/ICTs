@@ -1,16 +1,22 @@
 import "./Navbar.css";
 import user from "../../assets/user.svg"
+import { Link } from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route } from  'react-router-dom'
+
 
 const Navbar = ({ sidebarOpen, openSidebar}) =>{
     return(
+        
         <nav className="navbar">
+            <div>MINISTRY OF HEALTH</div>
             <div className="nav_icon" onCLick={() => openSidebar()}> 
                 <i className="fa fa-bars"></i>
             </div>
+
             <div className="navbar__left">
-                <a href="#">Messages</a>
+                <Link to='/messages'>Messages</Link>
                 <a href="#">News Feed</a>
-                <a className="about" href="#">About Us</a>
+                <Link to='/about'>About Us</Link>
             </div>
             <div className="navbar__right">
                 <a href="#">

@@ -11,7 +11,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
             <div className="sidebar__title">
                 <div className="sidebar__img">
                     <img src={ZMC} alt="ZMC"/><br />
-                    <h1>Ministry Of Health</h1>
+                    {/* <h1>Ministry Of Health</h1> */}
                 </div>
                 <i
                     className="fa fa-times"
@@ -23,7 +23,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                 <div className="sidebar__link sidebar_home"
                    >
                     <i className="fa fa-home"></i>
-                    <a href="/home">HOME</a>
+                    <Link to="/">HOME</Link>
                 </div>
                 <h2>SMART ZAMBIA SERVICES</h2>
                 <div className="sidebar__link">
@@ -46,15 +46,15 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                 <h2>PROPOSED SERVICES</h2>
                 <div className="sidebar__link">
                     <i className="fa fa-question"></i>
-                    <a href="#">Requests</a>
+                    <Link to="/">Pending projects</Link>
                 </div>
                 <div className="sidebar__link">
                     <i className="fa fa-plus"></i>
-                    <a href="#">Propose A Service</a>
+                    <Link to="/">Propose A Service</Link>
                 </div>
                 <div className="sidebar__logout">
                     <i className="fa fa-power-off"></i>
-                    <a href="#">Log Out</a>
+                    <Link to="#">Log Out</Link>
                 </div>
             </div>
         </div>
