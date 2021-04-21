@@ -10,16 +10,25 @@ function AddTech() {
     const [Developer, setDeveloper] = useState('');
 
     const submitData = () => {
-       Axios.post('http://localhost:3001') 
+       Axios.post("http://localhost:3001/api/insert", {
+           Name: Name, 
+           Category: Category, 
+           Description: Description, 
+           Developer: Developer,
+        }).then(()=> {
+            alert('successful insert');
+        });  
     };
-    
+
     return (
         <div className="AddTech">
-            <h1>ADD A CURRENTLY RUNNING TECHNOLOGY</h1>
+            <h1>ADD A MIS SYSTEM TO THE DATABASE</h1>
 
             <div className="form">
                 <label>Name of Technology</label>
-                <input type="text" name="Name" onChange={()=>{
+                <input type="text" 
+                    name="Name" 
+                    onChange={(e)=>{
                     setName(e.target.value)
                 }}/>
                 
@@ -27,7 +36,7 @@ function AddTech() {
                 <input 
                     type="text" 
                     name="Category" 
-                    onChange={()=>{
+                    onChange={(e)=>{
                     setCategory(e.target.value)
                 }}/>
                 
@@ -35,7 +44,7 @@ function AddTech() {
                 <input 
                     type="text" 
                     name="Description" 
-                    onChange={()=>{
+                    onChange={(e)=>{
                     setDescription(e.target.value)
                 }}/>
 
@@ -43,7 +52,7 @@ function AddTech() {
                 <input 
                     type="text" 
                     name="Developer" 
-                    onChange={()=>{
+                    onChange={(e)=>{
                     setDeveloper(e.target.value)
                 }}/>
                 {/* <label>Taxable</label>

@@ -1,29 +1,28 @@
 import "./Navbar.css";
 import user from "../../assets/user.svg"
 import { Link } from "react-router-dom";
-import {BrowserRouter as Router, Switch, Route } from  'react-router-dom'
-
+import { BsSearch, BsClock } from "react-icons/bs"
 
 const Navbar = ({ sidebarOpen, openSidebar}) =>{
     return(
         
         <nav className="navbar">
-            <div>MINISTRY OF HEALTH</div>
+            {/* <div>MINISTRY OF HEALTH</div> */}
             <div className="nav_icon" onCLick={() => openSidebar()}> 
                 <i className="fa fa-bars"></i>
             </div>
 
             <div className="navbar__left">
-                <Link to='/messages'>Messages</Link>
-                <a href="#">News Feed</a>
-                <Link to='/about'>About Us</Link>
+                <Link to='/stock'>Messages</Link>
+                <Link to='/stock'>News Feed</Link>
+                <Link to='/stock'>About Us</Link>
             </div>
             <div className="navbar__right">
                 <a href="#">
-                    <i className="fa fa-search"></i>
+                    <BsSearch />
                 </a>
                 <a href="#">
-                    <i className="fa fa-clock-o"></i>
+                    <BsClock />
                 </a> 
                 <a href="#">
                     <img width="30" src={user} alt="user" />  
