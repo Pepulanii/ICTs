@@ -38,6 +38,9 @@ h1{
     border-bottom: solid 1px rgba(255,255,255,0.1);
   }
   
+  /* .mis_row:hover{
+    transform: scale(1.1);
+  } */
   
   /* demo styles */
   
@@ -80,7 +83,7 @@ h1{
   
   /* for custom scrollbar for webkit browser*/
   
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
       width: 6px;
   } 
   ::-webkit-scrollbar-track {
@@ -88,4 +91,4 @@ h1{
   } 
   ::-webkit-scrollbar-thumb {
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-  }
+  } */

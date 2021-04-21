@@ -18,15 +18,15 @@ const Navbar = ({ sidebarOpen, openSidebar}) =>{
                 <Link to='/stock'>About Us</Link>
             </div>
             <div className="navbar__right">
-                <a href="#">
+                <Link to="">
                     <BsSearch />
-                </a>
-                <a href="#">
+                </Link>
+                <Link to="">
                     <BsClock />
-                </a> 
-                <a href="#">
+                </Link> 
+                <Link to="">
                     <img width="30" src={user} alt="user" />  
-                </a>
+                </Link>
             </div>
         </nav>
     )

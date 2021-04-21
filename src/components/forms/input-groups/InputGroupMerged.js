@@ -3,10 +3,10 @@ import { Search } from 'react-feather'
 import InputPasswordToggle from '@components/input-password-toggle'
 import { InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap'
 
-const InputGroupBasic = () => {
+const InputGroupMerged = () => {
   return (
     <Fragment>
-      <InputGroup className='mb-2'>
+      <InputGroup className='input-group-merge mb-2'>
         <InputGroupAddon addonType='prepend'>
           <InputGroupText>
             <Search size={14} />
@@ -14,32 +14,32 @@ const InputGroupBasic = () => {
         </InputGroupAddon>
         <Input placeholder='search...' />
       </InputGroup>
-      <InputPasswordToggle className='mb-2' label='Password' htmlFor='basic-default-password' />
-      <InputGroup className='mb-2'>
+      <InputPasswordToggle className='input-group-merge mb-2' label='Password' htmlFor='merge-password' />
+      <InputGroup className='input-group-merge mb-2'>
         <InputGroupAddon addonType='prepend'>
           <InputGroupText>@</InputGroupText>
         </InputGroupAddon>
         <Input placeholder='Username' />
       </InputGroup>
-      <InputGroup className='mb-2'>
+      <InputGroup className='input-group-merge mb-2'>
         <Input placeholder="Recipient's username" />
         <InputGroupAddon addonType='append'>
           <InputGroupText>@example.com</InputGroupText>
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup className='mb-2'>
+      <InputGroup className='input-group-merge mb-2'>
         <InputGroupAddon addonType='prepend'>
           <InputGroupText>https://example.com/users/</InputGroupText>
         </InputGroupAddon>
         <Input />
       </InputGroup>
-      <InputGroup className='mb-2'>
+      <InputGroup className='input-group-merge mb-2'>
         <InputGroupAddon addonType='prepend'>
           <InputGroupText>$</InputGroupText>
         </InputGroupAddon>
         <Input placeholder='100' />
       </InputGroup>
-      <InputGroup>
+      <InputGroup className='input-group-merge'>
         <InputGroupAddon addonType='prepend'>
           <InputGroupText>With textarea</InputGroupText>
         </InputGroupAddon>
@@ -49,4 +49,4 @@ const InputGroupBasic = () => {
   )
 }
 
-export default InputGroupBasic
+export default InputGroupMerged
