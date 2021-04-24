@@ -66,7 +66,7 @@ function AddTech() {
                     type="text" 
                     name="requirement_2" 
                     onChange={(e)=>{
-                    setReq1(e.target.value)
+                    setReq2(e.target.value)
                 }}/>
 
                 <label>Enter a Requirement</label>

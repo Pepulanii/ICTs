@@ -27,21 +27,21 @@ function Home() {
                 <thead>
                     <tr>
                     <th>MIS</th>
-                    <th>Ministry</th>
-                    <th>Category</th>
-                    <th>Agency</th>
                     <th>Description</th>
+                    <th>Year Launched</th>
+                    <th>Ministry</th>
+                    {/* <th>Description</th> */}
                     </tr>
                 </thead>
                 <tbody>
                     {techList.map((val)=> {
                         return (
                                 <tr>
-                                <td>{val.Name}</td>
-                                <td>Ministry Of Health </td>
-                                <td>{val.Category}</td>
-                                <td>{val.Agency}</td>
-                                <td>{val.Description}</td>
+                                <td>{val.MIS_Name}</td>
+                                <td>{val.MIS_Description} </td>
+                                <td>{val.MIS_Launch_Year}</td>
+                                <td>{val.Institution_Name}</td>
+                                {/* <td>{val.Description}</td> */}
                                 </tr>
                         )
                     })}
