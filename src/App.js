@@ -4,6 +4,7 @@ import Sidebar from './components/sidebar/Sidebar';
 import {BrowserRouter as Router, Switch, Route } from  'react-router-dom'
 
 import Home3 from './components/Home/Home3';
+// import SearchPage from './components/searchbar/SearchPage';
 import Eservices from './components/eservices/Eservices';
 import Messages from './components/messages/Messages';
 import About from './components/about/About';
@@ -11,6 +12,7 @@ import About from './components/about/About';
 import Addtech2 from './components/addTech/AddTech2';
 import Propose from './components/propose/Propose';
 import Stock from './components/stock/Stock';
+
 import './App.css';
 
 const App = () => {
@@ -32,6 +34,7 @@ const App = () => {
         <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
         <Switch>
           <Route exact path ='/' component = {Home3}></Route>
+          {/* <Route exact path ='/' component = {SearchPage}></Route> */}
           <Route exact path='/eservices' component = {Eservices}></Route>
           <Route exact path='/messages' component = {Messages}></Route>
           <Route exact path='/about' component = {About}></Route>
