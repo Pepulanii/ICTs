@@ -9,11 +9,11 @@ function Home() {
     // const [propList, setPropList] = useState([])
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/api/get').then((response)=>{
+        Axios.get('http://localhost:3001/home').then((response)=>{
             setTechList(response.data)
         })
     }, [])
-
+    
     // useEffect(()=>{
     //     Axios.get('http://localhost:3001/api/get/propose').then((response)=>{
     //         setPropList(response.data)

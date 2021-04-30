@@ -12,7 +12,7 @@ function AddTech() {
     const [requirement_3, setReq3] = useState('');
 
     const submitData = () => {
-       Axios.post("http://localhost:3001/api/insert_propose", {
+       Axios.post("http://localhost:3001/propose", {
            name: name, 
            category: category, 
            priority: priority, 

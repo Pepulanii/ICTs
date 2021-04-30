@@ -43,7 +43,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                 </div>
                 <div className="sidebar__link">
                     {/* <i className="fa fa-archive"></i> */}
-                    <Link to='/stock'>  E-Services</Link>
+                    <Link to='/eservices'>  E-Services</Link>
                 </div>
                 <div className="sidebar__link">
                     <GoDeviceMobile size={20}/>

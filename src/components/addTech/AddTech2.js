@@ -17,19 +17,19 @@ function AddTech2() {
     const [LaunchYear, setLaunchYear] = useState(2000);
     const [MobileEnabled, setMobileEnabled] = useState('Disabled');
     const [SerialNumber, setSerialNumber] = useState('');
-    const [SystemName, setSystemName] = useState('');
-    const [ServiceType, setServiceType] = useState('Revenue');
+    const [SystemName, setSystemName] = useState('FISP');
+    const [ServiceType, setServiceType] = useState('Information Dissemination');
     const [HostLocation, setHostLocation] = useState('');
     const [Platform, setPlatform] = useState('');
     const [SourceCode, setSourceCode] = useState('');
-    const [CodeType, setCodeType] = useState('');
+    const [CodeType, setCodeType] = useState('Open Source');
     const [LicencingCost, setLicencingCost] = useState(0);
     const [AnnualRevenue, setAnnualRevenue] = useState(0);
     const [Users, setUsers] = useState(0);
     const [Access, setAccess] = useState('Online');
 
     const submitData = () => {
-       Axios.post("http://localhost:3001/api/insert_MIS", {
+       Axios.post("http://localhost:3001/addMIS", {
            MIS_Name: Name, 
            MIS_Institution: Institution,                  //
            MIS_Description: Description,            //Brief description of service     
@@ -136,8 +136,8 @@ function AddTech2() {
                         <select name="MobileEnabled" onChange={(e)=>{
                             setMobileEnabled(e.target.value)
                         }}>
-                                <option value="Enabled">Enabled</option>
                                 <option value="Disabled">Disabled</option>
+                                <option value="Enabled">Enabled</option>
                         </select>
                     </label>
                 </div>
@@ -160,8 +160,8 @@ function AddTech2() {
                         <select name="SystemName" onChange={(e)=>{
                             setSystemName(e.target.value)
                         }}>
-                            <option value="E-payslip">E-payslip</option>
                             <option value="FISP">FISP</option>
+                            <option value="E-payslip">E-payslip</option>
                         </select>
                     </label>
                 </div>
@@ -171,9 +171,9 @@ function AddTech2() {
                         <select name="ServiceType" onChange={(e)=>{
                             setServiceType(e.target.value)
                         }}>
+                            <option value="Information Dissemination">Information Dissemination</option>
                             <option value="Revenue Collection">Revenue Collection</option>
                             <option value="Information Collection">Information Collection</option>
-                            <option value="Information Dissemination">Information Dissemination</option>
                             <option value="Other">Other</option>
                         </select>
                     </label>
