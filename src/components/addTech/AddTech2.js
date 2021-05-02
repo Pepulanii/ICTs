@@ -29,6 +29,7 @@ function AddTech2() {
     const [Access, setAccess] = useState('Online');
 
     const submitData = () => {
+        preventDefault();
        Axios.post("http://localhost:3001/addMIS", {
            MIS_Name: Name, 
            MIS_Institution: Institution,                  //
