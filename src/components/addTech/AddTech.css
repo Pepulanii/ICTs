@@ -187,3 +187,6 @@ button:hover {
   cursor:pointer;
   background: #2d88ce;
 }
+.error{
+  color: red;
+}

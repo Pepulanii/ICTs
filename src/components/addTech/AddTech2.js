@@ -29,7 +29,7 @@ function AddTech2() {
     const [Access, setAccess] = useState('Online');
 
     const submitData = () => {
-        preventDefault();
+        // preventDefault();
        Axios.post("http://localhost:3001/addMIS", {
            MIS_Name: Name, 
            MIS_Institution: Institution,                  //
@@ -72,7 +72,7 @@ function AddTech2() {
                     </label>
                 </div>
                 
-                <div class="form-row">
+                <div className="form-row">
                     <label>
                         <span>Institution</span>
                         <input 

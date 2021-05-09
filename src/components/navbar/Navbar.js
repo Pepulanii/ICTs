@@ -8,13 +8,13 @@ const Navbar = ({ sidebarOpen, openSidebar}) =>{
         
         <nav className="navbar">
             {/* <div>MINISTRY OF HEALTH</div> */}
-            <div className="nav_icon" onCLick={() => openSidebar()}> 
+            <div className="nav_icon" onClick={() => openSidebar()}> 
                 <i className="fa fa-bars"></i>
             </div>
 
             <div className="navbar__left">
                 <Link to='/stock'>Messages</Link>
-                <Link to='/stock'>News Feed</Link>
+                <Link to='../Login'>Log in</Link>
                 <Link to='/stock'>About Us</Link>
             </div>
             <div className="navbar__right">
