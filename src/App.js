@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, Component} from 'react';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/sidebar/Sidebar';
 import {BrowserRouter as Router, Switch, Route } from  'react-router-dom'
@@ -15,39 +15,65 @@ import Stock from './components/stock/Stock';
 import Register from './Register';
 import './App.css';
 
-const App = () => {
+class App extends Component {
+  constructor(){
+    super();
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const openSidebar = () => {
-    setSidebarOpen(true);
-  };
-  
-  const closeSidebar = () => {
-    setSidebarOpen(false);
+    this.state = {
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    }
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
-  return (
-    <div className="container">
-      <Router>
-        <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
-        <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
-        <Switch>
-          <Route exact path ='/' component = {Home3}></Route>
-          <Route exact path ='/login' component = {Login}></Route>
+  handleLogin(data) {
+    this.setState({
+      loggedInStatus: "LOGGED_IN",
+      user: data
+    });
+  }
 
-          {/* <Route exact path ='/' component = {SearchPage}></Route> */}
-          <Route exact path='/eservices' component = {Eservices}></Route>
-          <Route exact path='/messages' component = {Messages}></Route>
-          <Route exact path='/about' component = {About}></Route>
-          <Route exact path='/addservice' component = {Addtech2}></Route>
-          <Route exact path='/propose' component = {Propose}></Route>
-          <Route exact path='/stock' component = {Stock}></Route>
-          <Route exact path='/Register' component = {Register}></Route>
-        </Switch>
-      </Router>
-    </div>
-  );
+  // const [sidebarOpen, setSidebarOpen] = useState(false);
+  
+  // const openSidebar = () => {
+  //   setSidebarOpen(true);
+  // };
+  
+  // const closeSidebar = () => {
+  //   setSidebarOpen(false);
+  // }
+  render(){
+    return (
+      <div className="container">
+        <Router>
+          <Navbar  />
+          <Sidebar />
+          <Switch>
+            <Route exact 
+            path ='/' 
+            render = {props => (
+              <Home3 {...props} loggedInStatus = {this.state.loggedInStatus} />
+            )}/>
+            <Route exact path ='/login' component = {Login} />
+  
+            {/* <Route exact path ='/' component = {SearchPage}></Route> */}
+            <Route exact path='/eservices' 
+              render = {props => (
+              <Eservices {...props} loggedInStatus = {this.state.loggedInStatus} />
+            )}
+            />
+            <Route exact path='/messages' component = {Messages} />
+            <Route exact path='/about' component = {About} />
+            <Route exact path='/addservice' component = {Addtech2} />
+            <Route exact path='/propose' component = {Propose} />
+            <Route exact path='/stock' component = {Stock} />
+            <Route exact path='/Register' component = {Register} />
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
+  
 }
 
 export default App;

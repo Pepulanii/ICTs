@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './AddTech.css'
 import Axios from 'axios'
 import { toast } from 'react-toastify';
@@ -10,6 +10,16 @@ function AddTech2() {
     const notify = () =>{
         toast('Successful Insert!')
     }
+    const [deptList, setDeptList] = useState([]); 
+    // useEffect ( () => {
+        Axios({
+            method: 'get',
+            url:'http://localhost:3001/register',
+            responseType: 'stream'
+        }).then((response) =>{
+            setDeptList(response.data)
+        })
+    // }, [])
 
     const [Name, setName] = useState('');
     const [Institution, setInstitution] = useState(1);
@@ -75,12 +85,30 @@ function AddTech2() {
                 <div className="form-row">
                     <label>
                         <span>Institution</span>
-                        <input 
-                            type="text" 
-                            name="Institution" 
-                            onChange={(e)=>{
-                            setInstitution(e.target.value)
-                        }}/>
+                        <select 
+                            name="department"
+                            id="department"
+                            // {... register("department", {
+                            //     required: {
+                            //         value: true,
+                            //         message: "Please select a department that you belong to"
+                            //     },
+                            //     pattern: {
+                            //         value: /\d+/,
+                            //         message: "Please select a department"
+                            //     }
+                            // })
+                            // }
+                        >
+                            <option value="none">
+                                Select an Option
+                            </option>
+                            {deptList.map((val, i) => {
+                                return (
+                                    <option key={i} value={val.id_Institution}>{val.Institution_Name}</option>
+                                )
+                            })}
+                        </select>
                     </label>
                 </div>
                 
@@ -121,7 +149,7 @@ function AddTech2() {
                                 <option value="2013">2013</option>
                                 <option value="2014">2014</option>
                                 <option value="2015">2015</option>
-                                <option value="2016">2016</option>
+                                <option selected value="2016">2016</option>
                                 <option value="2017">2017</option>
                                 <option value="2018">2018</option>
                                 <option value="2019">2019</option>
@@ -137,7 +165,7 @@ function AddTech2() {
                         <select name="MobileEnabled" onChange={(e)=>{
                             setMobileEnabled(e.target.value)
                         }}>
-                                <option value="Disabled">Disabled</option>
+                                <option selected value="Disabled">Disabled</option>
                                 <option value="Enabled">Enabled</option>
                         </select>
                     </label>
@@ -161,7 +189,7 @@ function AddTech2() {
                         <select name="SystemName" onChange={(e)=>{
                             setSystemName(e.target.value)
                         }}>
-                            <option value="FISP">FISP</option>
+                            <option selected value="FISP">FISP</option>
                             <option value="E-payslip">E-payslip</option>
                         </select>
                     </label>
@@ -174,7 +202,7 @@ function AddTech2() {
                         }}>
                             <option value="Information Dissemination">Information Dissemination</option>
                             <option value="Revenue Collection">Revenue Collection</option>
-                            <option value="Information Collection">Information Collection</option>
+                            <option selected value="Information Collection">Information Collection</option>
                             <option value="Other">Other</option>
                         </select>
                     </label>
@@ -223,7 +251,7 @@ function AddTech2() {
                         <select name="CodeType" onChange={(e)=>{
                             setCodeType(e.target.value)
                         }}>
-                            <option value="Open Source">Open Source</option>
+                            <option selected value="Open Source">Open Source</option>
                             <option value="Proprietary">Proprietary</option>
                         </select>
                     </label>

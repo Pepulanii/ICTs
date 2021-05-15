@@ -1,164 +1,148 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from "react-router-dom";
 import "./components/addTech/AddTech.css";
 import Axios from 'axios';
+import { useForm } from 'react-hook-form';
 import { Redirect } from  'react-router-dom'
 
 
 function Login() {
+    const { 
+        register, 
+        handleSubmit, 
+        formState: { errors },
+    } = useForm();
     let history = useHistory();
 
     // const [usernameReg, setUsernameReg] = useState('');
     // const [passwordReg, setPasswordReg] = useState('');
     // const [departmentReg, setDepartmentReg] = useState(1);
     
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
 
-    const [loginStatus, setLoginStatus] = useState('');
-
-    // const [department, setDepartment] = useState(1);
+    const [loginStatus, setLoginStatus] = useState(false);
+    // const [ user, setUser ] = useState([]);
+    const [department, setDepartment] = useState(1);
     // const [deptList, setDeptList] = useState([]);
 
-    // useEffect(() => {
-    //     Axios.get('http://localhost:3001/register').then((response) =>{
-    //         setDeptList(response.data)
-    //     })
-    // }, [])
-
-    // const register = () => {
-    //     Axios.post("http://localhost:3001/register", {
-    //         username: usernameReg, 
-    //         password: passwordReg,
-    //         department: departmentReg,
-        
-    //     }).then((response) => {
-    //         console.log(response);
-    //     });
-    // };
-
-    const login = props => {
-        
-        Axios.post("http://localhost:3001/login", {
-            username: username, 
-            password: password,
-            // department: department,
-        
-        }).then((response) => {
-
-            if(response.data.message){
-                setLoginStatus(response.data.message)
-            } else{
-                setLoginStatus(response.data[0].username)
-                // appLogin();
-                // <Redirect to="/" />
-                
+    // Axios.defaults.withCredentials = true;
+    const onSubmit = (data) => {
+        try {
+            Axios.post('http://localhost:3001/login',{
+                username: data.username, 
+                password: data.password,
             }
-            console.log(response.data);
-        });
-    };
+        ).then((response) => {
 
-    // function appLogin(){
-    //     history.push("/")
-    // }
+            // if(response.data.message){
+                // console.log(response)
+            if(!response.data.auth){
+                setLoginStatus(false);
+            }else{
+                // console.log(response.data);
+                localStorage.setItem("token", response.data.token)
+                setLoginStatus(true);
+                history.push('/')
+            }
+
+        }, (error) =>{
+                // console.log(error);
+        }
+        )
+        // props.history.push("/");
+        }catch(err){
+            console.log(err)
+        }
+        
+    }
+
+    const userAuthenticated = () => {
+        Axios.get("http://localhost/3001/userAuth", {
+            headers:{
+                "x-access-token": localStorage.getItem("token"),
+            },
+        }).then((response) =>{
+                console.log(response)
+            })
+    }
 
     return (
         <div className="form-basic">
-            {/* <div className="registration">
-                <h1>Registration</h1>
-                <div className="form-row">
-                    <label>
-                        <span>Username</span>
-                        <input 
-                            type="text" 
-                            onChange={(e) => {
-                            setUsernameReg(e.target.value)
-                        }}/>
-                    </label>
-                </div>
-                
-                <div className="form-row">
-                    <label> 
-                        <span>Password</span>
-                        <input 
-                            type="password"
-                            onChange={(e) => {
-                            setPasswordReg(e.target.value)
-                        }}/>
-                    </label>
-                </div>
-                
-                
-                <div class="form-row">
-                <label>
-                    <span>Department</span>
-                    
-                    <select name="department" onChange={(e)=> {
-                        setDepartmentReg(e.target.value)
-                    }}>
-                    {deptList.map((val) => {
-                        return (
-                            <option value={val.id_Institution}>{val.Institution_Name}</option>
-                        )
-                    })}
-                    </select>
-                </label>
-                </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="registration">
+                    <h1>Log In</h1>
+                        <div className="form-row">
+                            <label htmlFor="username">
+                                <span>Username</span>
+                                <input 
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    placeholder=""
+                                    {...register("username", {
+                                        required: {
+                                            value: true,
+                                            message: "You must enter a username"
+                                            }, 
+                                        // minLength: {
+                                        //     value: 3,
+                                        //     message: "username should be 3 or more characters"
+                                        //     }
+                                    })
+                                    }
+                                />
+                                {errors.username && (
+                                    <p className="error">{errors.username.message}</p>
+                                )
+                                }
+                            </label>
+                        </div>
+                        
+                        <div className="form-row">
+                            <label> 
+                                <span>Password</span>
+                                <input 
+                                    name="password" 
+                                    type="password"
+                                    id="password"
+                                    placeholder=""
+                                    {...register("password", {
+                                        required: { 
+                                        value: true, 
+                                        message: "You must enter a password"
+                                        },
+                                        // minLength: {
+                                        //     value: 8,
+                                        //     message: "Password should be at least 8 characters"
+                                        // }
+                                    })
+                                    } 
+                                />
+                                {errors.password && (
+                                    <p className="error">{errors.password.message}</p>
+                                )
+                                }
+                            </label>
+                        </div>
 
-                <button onClick={register}>Register</button>
-            </div> */}
-            
-            <div className="login">
-            <h1>Login</h1>
-                <div className="form-row">
-                    <label>
-                        <span>Username</span>
-                        <input 
-                            type="text" 
-                            placeholder="Username..." 
-                            onChange={(e) => {
-                                setUsername(e.target.value)
-                            }}
-                        />
-                    </label>
-                </div>
+                        <div>
+                            <button type="submit">Log in</button>
+                            <br /><br /><br />
+                        </div>
+                        
+                        <div>
 
-                <div className="form-row">
-                    <label>
-                        <span>Password</span>
-                        <input 
-                            type="password"    
-                            placeholder="Password..." 
-                            onChange={(e) => {
-                                setPassword(e.target.value)
-                            }}   
-                        />
-                    </label>
-                </div>
-
-                {/* <div class="form-row">
-                <label>
-                    <span>Department</span>
-                    
-                    <select name="department" onChange={(e)=> {
-                        setDepartment(e.target.value)
-                    }}>
-                    {deptList.map((val) => {
-                        return (
-                            <option value={val.id_Institution}>{val.Institution_Name}</option>
-                        )
-                    })}
-                    </select>
-                </label>
-                </div> */}
-                <button onClick={login}> Log in </button>
-                
-            </div>
-            <h2>{loginStatus}</h2>
-
-            <Link to="Register">Sign up</Link>
+                            {loginStatus && (
+                                <button onClick={userAuthenticated}>Check If Authenticated</button>
+                            )}
+                        </div>
+                        <div>
+                            <Link to="/Register">Sign Up</Link>
+                        </div>
+                </div>  
+            </form>
         </div>
-        
     )
 }
 

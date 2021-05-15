@@ -1,28 +1,25 @@
-
 import React, {useState, useEffect} from 'react'
 import './Home3.css'
 import Axios from 'axios'
 
-function Home() {
-    // const [showServices, setShowServices ] = useState(false);
+function Home(props) {
     const [techList, setTechList] = useState([])
-    // const [propList, setPropList] = useState([])
+    const [loggedIn, setLogginStatus] = useState("NOT_LOGGED_IN")
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/home').then((response)=>{
+        Axios({
+            method: 'get',
+            url:'http://localhost:3001/',
+            responseType: 'stream'
+        }).then((response)=>{
             setTechList(response.data)
         })
     }, [])
     
-    // useEffect(()=>{
-    //     Axios.get('http://localhost:3001/api/get/propose').then((response)=>{
-    //         setPropList(response.data)
-    //     })
-    // }, [])
-
     return (
         <div className='home_container'>
               {/* <h1>Existing Services</h1> */}
+              <h1>Status: {props.loggedInStatus}</h1>
             <table>
                 <thead>
                     <tr>
@@ -34,22 +31,17 @@ function Home() {
                     </tr>
                 </thead>
                 <tbody>
-                    {techList.map((val)=> {
+                    {techList.map((val, i)=> {
                         return (
-                                <tr>
+                            <tr key={i}>
                                 <td>{val.MIS_Name}</td>
                                 <td>{val.MIS_Description} </td>
                                 <td>{val.MIS_Launch_Year}</td>
                                 <td>{val.Institution_Name}</td>
-                                {/* <td>{val.Description}</td> */}
-                                </tr>
+                            </tr>
                         )
                     })}
-                    {/* <tr>
-                        <td>Some Data</td>
-                        <td>More data</td>
-                        <td>garbage data</td>
-                    </tr> */}
+    
                 </tbody>
             </table>
 

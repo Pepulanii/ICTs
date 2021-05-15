@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import '../Home/Home3.css'
 import Axios from 'axios'
 
-function Eservices() {
+const Eservices = props => {
     // const [showServices, setShowServices ] = useState(false);
     const [servicesList, setEservices] = useState([])
     // const [propList, setPropList] = useState([])
@@ -23,6 +23,7 @@ function Eservices() {
     return (
         <div className='home_container'>
               {/* <h1>Existing Services</h1> */}
+              <h1>Status: {props.loggedInStatus}</h1>
             <table>
                 <thead>
                     <tr>
@@ -34,15 +35,14 @@ function Eservices() {
                     </tr>
                 </thead>
                 <tbody>
-                    {servicesList.map((val)=> {
+                    {servicesList.map((val, i)=> {
                         return (
-                                <tr>
+                            <tr key={i}>
                                 <td>{val.EName}</td>
                                 <td>{val.E_Description} </td>
                                 <td>{val.Institution_Name}</td>
                                 <td>{val.EStatus}</td>
-                                {/* <td>{val.Description}</td> */}
-                                </tr>
+                            </tr>
                         )
                     })}
                     {/* <tr>

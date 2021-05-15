@@ -69,7 +69,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                 </div>
                 <div className="sidebar__logout">
                     <BiPowerOff size={30}/>
-                    <Link to="#">  Log Out</Link>
+                    <Link to="/Login">  Log Out</Link>
                 </div>
             </div>
         </div>
