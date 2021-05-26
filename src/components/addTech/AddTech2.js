@@ -15,7 +15,9 @@ function AddTech2() {
         handleSubmit,
         formState: { errors },
     } = useForm({
-        defaultValues: { LicencingCost: 0.00, AnnualRevenue: 0.00, Users:0 },
+        defaultValues: { LicencingCost: 0.00, AnnualRevenue: 0.00, Users:0,
+            MobileEnabled: 'Disabled', SystemName: 'FISP', Access: 'online',
+            Status: 'Operational', ServiceType: 'Information Collection', LaunchYear:2016 },
     });
 
     let history = useHistory();
@@ -55,8 +57,8 @@ function AddTech2() {
                 MIS_Licencing_Cost: data.LicencingCost,       //Annual Licensing Cost
                 MIS_Anual_Revenue: data.AnnualRevenue,        //Annual Revenue Collected 
                 MIS_Number_of_Users: data.Users,              // Total number of Users
-                MIS_Accessibility: data.Access, 
-                MIS_Status: data.Status,                       // Type of accessibility – i.e. online, GWAN 
+                MIS_Accessibility: data.Access,               // Type of accessibility – i.e. online, GWAN
+                MIS_Status: data.Status,                        
                 MIS_URL : data.websiteURL,
                 Agency: data.Agency
             }
@@ -210,7 +212,7 @@ function AddTech2() {
                             id="MobileEnabled" 
                             {...register("MobileEnabled")}
                         >
-                            <option selected value="Disabled">Disabled</option>
+                            <option value="Disabled">Disabled</option>
                             <option value="Enabled">Enabled</option>
                         </select>
                     </label>
@@ -253,7 +255,7 @@ function AddTech2() {
                         >
                             <option value="Information Dissemination">Information Dissemination</option>
                             <option value="Revenue Collection">Revenue Collection</option>
-                            <option selected value="Information Collection">Information Collection</option>
+                            <option value="Information Collection">Information Collection</option>
                             <option value="Other">Other</option>
                         </select>
                     </label>
