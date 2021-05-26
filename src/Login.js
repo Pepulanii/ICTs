@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory, Link } from "react-router-dom";
+import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import "./components/addTech/AddTech.css";
 import Axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { Redirect } from  'react-router-dom'
+// import {BrowserRouter as Router, Switch, Route } from  'react-router-dom';
+// import App from './App';
 
 
-function Login() {
+function Login(props) {
     const { 
         register, 
         handleSubmit, 
         formState: { errors },
     } = useForm();
-    let history = useHistory();
+    // let history = useHistory();
 
     // const [usernameReg, setUsernameReg] = useState('');
     // const [passwordReg, setPasswordReg] = useState('');
@@ -23,8 +25,6 @@ function Login() {
 
     const [loginStatus, setLoginStatus] = useState(false);
     // const [ user, setUser ] = useState([]);
-    const [department, setDepartment] = useState(1);
-    // const [deptList, setDeptList] = useState([]);
 
     // Axios.defaults.withCredentials = true;
     const onSubmit = (data) => {
@@ -33,45 +33,62 @@ function Login() {
                 username: data.username, 
                 password: data.password,
             }
-        ).then((response) => {
+            ).then((response) => {
 
-            // if(response.data.message){
-                // console.log(response)
-            if(!response.data.auth){
-                setLoginStatus(false);
-            }else{
-                // console.log(response.data);
-                localStorage.setItem("token", response.data.token)
-                setLoginStatus(true);
-                history.push('/')
-            }
+                // if(response.data.message){
+                console.log(response)
+                // if(!response.data.auth){
+                //     setLoginStatus(false);
+                // }else{
+                //     console.log(response.data.result);
+                    // localStorage.setItem("token", response.data.token)
+                    // setLoginStatus(true);
+                    // props.history.push("/");
 
-        }, (error) =>{
+                    // <Redirect 
+                    //     to={{
+                    //         pathname:'/',
+                    //         state: {
+                    //                 // loggedIn: true,
+                    //                 // department:response.data.result[0].department,
+                    //                 // user: response.data.result[0].id,
+                    //                 // {{... props} handleLogin(result[0])},
+                    //                 props.handleLogin(response.data.result[0])
+                    //         }
+                    //         }}    
+                    // />
+                // }
+
+            }, (error) => {
                 // console.log(error);
-        }
-        )
-        // props.history.push("/");
+                }
+            );
         }catch(err){
             console.log(err)
         }
         
+        // if(loginStatus){
+        //     // {props.handleLogin(response.data.result[0])}
+        //     return <Redirect to='/' />
+        // }
     }
 
-    const userAuthenticated = () => {
-        Axios.get("http://localhost/3001/userAuth", {
-            headers:{
-                "x-access-token": localStorage.getItem("token"),
-            },
-        }).then((response) =>{
-                console.log(response)
-            })
-    }
+    // const userAuthenticated = () => {
+    //     Axios.get("http://localhost/3001/userAuth", {
+    //         headers:{
+    //             "x-access-token": localStorage.getItem("token"),
+    //         },
+    //     }).then((response) =>{
+    //             console.log(response)
+    //         })
+    // }
 
     return (
         <div className="form-basic">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="registration">
                     <h1>Log In</h1>
+                    <h2>Status: {props.loggedInStatus}</h2>
                         <div className="form-row">
                             <label htmlFor="username">
                                 <span>Username</span>
@@ -131,12 +148,12 @@ function Login() {
                             <br /><br /><br />
                         </div>
                         
-                        <div>
+                        {/* <div>
 
                             {loginStatus && (
                                 <button onClick={userAuthenticated}>Check If Authenticated</button>
                             )}
-                        </div>
+                        </div> */}
                         <div>
                             <Link to="/Register">Sign Up</Link>
                         </div>

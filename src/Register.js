@@ -3,7 +3,10 @@ import { useHistory } from "react-router-dom";
 import Axios from 'axios';
 import { useForm } from 'react-hook-form';
 import "./components/addTech/AddTech.css";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure()
 function Register(){
     const { 
         register, 
@@ -13,9 +16,9 @@ function Register(){
     let history = useHistory();
 
     const [deptList, setDeptList] = useState([]);
-    
-    // const authAxios = axios.create({
-    //     baseURL: 'http://localhost:3001/',
+    const notify = () => {
+        toast.success('Success! You can now log into the system.')
+    }
 
 
     // Using Axios to set the list of ministries from the Database
@@ -48,8 +51,8 @@ function Register(){
             console.log(err);
         }
         // console.log(data);
+        notify();
         history.push('/Login');
-
     };
     
     return (
@@ -119,7 +122,7 @@ function Register(){
                         <select 
                             name="department"
                             id="department"
-                            defaultValue="Select a dept"
+                            // defaultValue="Select a dept"
                             {... register("department", {
                                 required: {
                                     value: true,

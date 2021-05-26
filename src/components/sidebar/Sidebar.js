@@ -49,24 +49,29 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
                     <GoDeviceMobile size={20}/>
                     <Link to='/stock'>  Mobile Services</Link>
                 </div>
+                <h2>ADD SERVICES TO DATBASE</h2>
                 <div className="sidebar__link">
                     <BiLayerPlus size={20}/>
-                    <Link to="addservice">  Add A Service</Link>
+                    <Link to="/addmis">  Add A MIS</Link>
                 </div>
-                <h2>TAXABLE SERVICES</h2>
+                <div className="sidebar__link">
+                    <BiLayerPlus size={20}/>
+                    <Link to="/AddEservice">  Add an E-Service</Link>
+                </div>
                 <div className="sidebar__link">
                     <BiAddToQueue size={20}/>
-                    <Link to='/stock'>  Add A Taxable Service</Link>
+                    <Link to='/mobile'>Add A Mobile Service</Link>
                 </div>
-                <h2>PROPOSED SERVICES</h2>
-                <div className="sidebar__link">
-                    <VscLoading size={20}/>
-                    <Link to='/stock'>  Pending projects</Link>
-                </div>
+                <h2>PROPOSE SERVICES</h2>
                 <div className="sidebar__link">
                     <IoIosCreate size={20} />
                     <Link to='/propose'>Propose A Service</Link>
                 </div>
+                <div className="sidebar__link">
+                    <VscLoading size={20}/>
+                    <Link to='/stock'>  Pending projects</Link>
+                </div>
+                
                 <div className="sidebar__logout">
                     <BiPowerOff size={30}/>
                     <Link to="/Login">  Log Out</Link>

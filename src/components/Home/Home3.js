@@ -4,7 +4,6 @@ import Axios from 'axios'
 
 function Home(props) {
     const [techList, setTechList] = useState([])
-    const [loggedIn, setLogginStatus] = useState("NOT_LOGGED_IN")
 
     useEffect(() => {
         Axios({
@@ -20,6 +19,7 @@ function Home(props) {
         <div className='home_container'>
               {/* <h1>Existing Services</h1> */}
               <h1>Status: {props.loggedInStatus}</h1>
+              {/* <h2>Department: {props.department}</h2> */}
             <table>
                 <thead>
                     <tr>
