@@ -11,6 +11,7 @@ function Home(props) {
         Axios({
             method: 'get',
             url:'http://localhost:3001/',
+            credentials: 'true',
             responseType: 'stream'
         }).then((response)=>{
             setTechList(response.data)
